@@ -1,0 +1,12 @@
+target/*
+*/*.*~
+*/*.jar
+.idea/*
+*.iml
+/target
+*~
+.classpath
+.settings
+.project
+*.jar
+*.o
