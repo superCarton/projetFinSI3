@@ -5,11 +5,10 @@
  * \author Romain Guillot
  */
 
-
-#include "exec.h"
-#include "error.h"
 #include <stdio.h>
 #include <unistd.h>
+#include "exec.h"
+#include "error.h"
 
 bool instr_illop(Machine *pmach, Instruction instr);
 bool instr_nop(Machine *pmach, Instruction instr);
@@ -26,6 +25,10 @@ bool instr_halt(Machine *pmach, Instruction instr);
 bool cmp_op(Machine *pmach, Instruction instr);
 unsigned calculate_adress(Machine *pmach, Instruction instr);
 void set_cc(Machine *pmach, Word value);
+void error_instruction(Machine *pmach, Error err);
+void check_index_register(Machine *pmach, int index);
+void check_sp(Machine *pmach, int sp);
+void check_adress_data(Machine *pmach, unsigned adress);
 
 //! Décodage et exécution d'une instruction
 /*!
@@ -49,7 +52,7 @@ bool decode_execute(Machine *pmach, Instruction instr){
 		case PUSH : b = instr_push(pmach, instr); break;
 		case POP : b = instr_pop(pmach, instr); break;
 		case HALT : b = instr_halt(pmach, instr); break;
-		default : b = false; break;
+		default : error_instruction(pmach, ERR_UNKNOWN); break;
 	}
 	return b;
 }
@@ -63,9 +66,7 @@ bool decode_execute(Machine *pmach, Instruction instr){
  */
 bool instr_illop(Machine *pmach, Instruction instr){
 	
-	error(ERR_ILLEGAL, pmach->_pc);
-	exit(EXIT_FAILURE);
-
+	error_instruction(pmach, ERR_NOERROR);
 	return false;
 }
 
@@ -89,17 +90,19 @@ bool instr_nop(Machine *pmach, Instruction instr){
  */
 bool instr_load(Machine *pmach, Instruction instr){
 
+	check_index_register(pmach, instr.instr_generic._regcond);
+
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 
 		unsigned addr = calculate_adress(pmach, instr);
+		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] =  pmach->_data[addr];
 
 	} else if (instr.instr_generic._immediate == 1){ //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] = instr.instr_immediate._value;
 	}
 	else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
@@ -116,13 +119,16 @@ bool instr_store(Machine *pmach, Instruction instr){
 
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 
+		check_index_register(pmach, instr.instr_generic._regcond);
 		unsigned addr = calculate_adress(pmach, instr);
-
+		check_adress_data(pmach, addr);
+		if (addr >= pmach->_dataend){
+			error_instruction(pmach, ERR_SEGDATA);
+		}
 		pmach->_data[addr] = pmach->_registers[instr.instr_generic._regcond];
 
 	} else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_IMMEDIATE);
 
 	}
 	
@@ -137,17 +143,18 @@ bool instr_store(Machine *pmach, Instruction instr){
  */
 bool instr_add(Machine *pmach, Instruction instr){
 	
+	check_index_register(pmach, instr.instr_generic._regcond);
 
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 
 		unsigned addr = calculate_adress(pmach, instr);
+		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] += pmach->_data[addr];
 
 	} else if (instr.instr_generic._immediate == 1) { //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] += instr.instr_immediate._value;
 	} else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
@@ -162,16 +169,18 @@ bool instr_add(Machine *pmach, Instruction instr){
  */
 bool instr_sub(Machine *pmach, Instruction instr){
 
+	check_index_register(pmach, instr.instr_generic._regcond);
+ 
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 
 		unsigned addr = calculate_adress(pmach, instr);
+		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] -= pmach->_data[addr];
 
 	} else if (instr.instr_generic._immediate == 1) { //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] -= instr.instr_immediate._value;
 	} else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
@@ -189,11 +198,13 @@ bool instr_branch(Machine *pmach, Instruction instr){
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 		if (cmp_op(pmach, instr)){ //!< Verification condition
 			unsigned addr = calculate_adress(pmach, instr);
+			if (addr < 0 || addr >= pmach->_textsize){ //!< Verification emplacement pc
+				error_instruction(pmach, ERR_SEGTEXT); 
+			}			
 			pmach->_pc = addr;
 		}
 	} else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_IMMEDIATE);
 	}
 
 	return true;
@@ -209,15 +220,19 @@ bool instr_call(Machine *pmach, Instruction instr){
 
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 		if (cmp_op(pmach, instr)){ //!< Verification condition
+			check_sp(pmach, pmach->_sp);
 			unsigned addr = calculate_adress(pmach, instr);
 			pmach->_data[pmach->_sp] = pmach->_pc;
 			pmach->_sp -= 1;
+			if (addr < 0 || addr >= pmach->_textsize){ //!< Verification emplacement pc
+				error_instruction(pmach, ERR_SEGTEXT); 
+			}
 			pmach->_pc = addr;
 		}
 	} else { //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_IMMEDIATE);
 	}
+
 	return true;
 }
 
@@ -229,6 +244,7 @@ bool instr_call(Machine *pmach, Instruction instr){
  */
 bool instr_ret(Machine *pmach, Instruction instr){
 	
+	check_sp(pmach, pmach->_sp + 1);
 	pmach->_sp += 1;
 	pmach->_pc = pmach->_data[pmach->_sp];
 	return true;
@@ -242,21 +258,23 @@ bool instr_ret(Machine *pmach, Instruction instr){
  */
 bool instr_push(Machine *pmach, Instruction instr){
 
+	check_sp(pmach, pmach->_sp);
+
 	if (instr.instr_generic._immediate == 0){ //!< Mode absolu
 
 		unsigned addr = calculate_adress(pmach, instr);
+		check_adress_data(pmach, addr);
 		pmach->_data[pmach->_sp] = pmach->_data[addr];
 
-	} else 	if (instr.instr_generic._immediate == 1){ //!< Mode immediat
+	} else if (instr.instr_generic._immediate == 1){ //!< Mode immediat
 
 		pmach->_data[pmach->_sp] = instr.instr_immediate._value;
 
-	} else { //!< instruction illégale
-
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+	} else { //!< Instruction illégale
+		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
+	check_sp(pmach, pmach->_sp - 1);
 	pmach->_sp -= 1;
 	return true;
 }
@@ -270,13 +288,16 @@ bool instr_push(Machine *pmach, Instruction instr){
 bool instr_pop(Machine *pmach, Instruction instr){
 
 	if (instr.instr_generic._immediate != 0){ //!< Instruction illégale
-		error(ERR_ILLEGAL, pmach->_pc);
-		exit(EXIT_FAILURE);
+		error_instruction(pmach, ERR_IMMEDIATE);
 	}
 
 	unsigned addr = calculate_adress(pmach, instr);
-
+	check_adress_data(pmach, addr);
+	check_sp(pmach, pmach->_sp + 1);
 	pmach->_sp += 1;
+	if (addr >= pmach->_dataend){
+		error_instruction(pmach, ERR_SEGDATA);
+	}
 	pmach->_data[addr] = pmach->_data[pmach->_sp];
 
 	return true;
@@ -312,7 +333,7 @@ bool cmp_op(Machine *pmach, Instruction instr){
 		case GE : b = (cc == CC_Z || cc == CC_P) ? true : false; break; //!< Résultat positif ou nul
 		case LT : b = (cc == CC_N) ? true : false; break; //!< Résultat négatif
 		case LE : b = (cc == CC_N || cc == CC_Z) ? true : false; break; //!< Résultat négatif ou nul
-		default : b = false; break;
+		default : error_instruction(pmach, ERR_CONDITION); break;
 	}
 
 	return b;		
@@ -325,11 +346,11 @@ bool cmp_op(Machine *pmach, Instruction instr){
  */
 void set_cc(Machine *pmach, Word value){
 	
-	if (value<0){
+	if (value<0){ //!< Valeur négative
 		pmach->_cc = CC_N;
-	} else if (value>0){
+	} else if (value>0){ //!< Valeur positive
 		pmach->_cc = CC_P;
-	} else {
+	} else { //!< Valeur nulle
 		pmach->_cc = CC_Z;
 	}
 }
@@ -345,12 +366,57 @@ unsigned calculate_adress(Machine *pmach, Instruction instr){
 	
 	unsigned addr;
 	if (instr.instr_generic._indexed == 1){ //!< Mode indexé
+		check_index_register(pmach, instr.instr_indexed._rindex);
 		addr = pmach->_registers[instr.instr_indexed._rindex]+instr.instr_indexed._offset;
 	} else if (instr.instr_generic._indexed == 0){ //!< Mode absolu
 		addr = instr.instr_absolute._address;
 	}
 
 	return addr;
+}
+
+//! Verifie que l'on accede pas à un registre inconnu
+/*!
+ * \param pmach la machine/programme en cours d'exécution
+ * \param index l'indexe du registre à acceder
+ */
+void check_index_register(Machine *pmach, int index){
+	if (index<0 || index > (NREGISTERS-1)){
+		error_instruction(pmach, ERR_ILLEGAL);
+	} 
+}
+
+//! Verifie que l'on accede pas en dehors de la pile, ou que la pile est pleine
+/*!
+ * \param pmach la machine/programme en cours d'exécution
+ * \param sp l'indexe de la pile à acceder
+ */
+void check_sp(Machine *pmach, int sp){
+	if (sp < pmach->_dataend || sp > (pmach->_datasize-1)){
+		error_instruction(pmach, ERR_SEGSTACK);
+	}
+}
+
+//! Verifie que l'on accede pas en dehors du segment de données
+/*!
+ * \param pmach la machine/programme en cours d'exécution
+ * \param sp l'adresse de la memoire à acceder
+ */
+void check_adress_data(Machine *pmach, unsigned adress){
+	if (adress < 0 || adress >= pmach->_datasize){
+		error_instruction(pmach, ERR_SEGDATA);
+	}
+}
+
+//! Instruction illégale
+/*!
+ * Affiche l'instruction illégale
+ * Arrete l'éxécution du programme
+ * \param pmach la machine/programme en cours d'exécution
+ */
+void error_instruction(Machine *pmach, Error err){
+	error(err, pmach->_pc);
+	exit(EXIT_FAILURE);
 }
 
 //! Trace de l'exécution
@@ -364,7 +430,7 @@ unsigned calculate_adress(Machine *pmach, Instruction instr){
  */
 void trace(const char *msg, Machine *pmach, Instruction instr, unsigned addr){
 
-	printf("TRACE: %s: 0x%0.4x: ", msg, (uint32_t)addr);
+	printf("TRACE: %s: %#.4x: ", msg, (uint32_t)addr);
 	print_instruction(instr, addr);
 	printf("\n");
 }
