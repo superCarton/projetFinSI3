@@ -8,6 +8,7 @@
 #include "machine.h"
 #include "debug.h"
 #include "exec.h"
+#include "error.h"
 
 void load_program(Machine *pmach,
               unsigned textsize, Instruction text[textsize],
@@ -35,14 +36,14 @@ void print_mem(Instruction * text, unsigned textsize, Word * data, unsigned data
 	printf("Instruction text[] = {\n\t");
 	for (i = 0; i < textsize; ++i) {
 		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("%#.8x%s",text[i]._raw,c);
+		printf("0x%.8x%s",text[i]._raw,c);
 	}
 	printf("\n};\nunsigned textsize = %d;\n", textsize);
 
 	printf("\nWord data[] = {\n\t");
 	for (i = 0; i < datasize; ++i) {
 		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("%#.8x%s",data[i],c);
+		printf("0x%.8x%s",data[i],c);
 	}
 	printf("\n};\nunsigned datasize = %d;\n", datasize);
 }
@@ -52,7 +53,6 @@ void read_program(Machine *mach, const char *programfile)
 	FILE * fp;
 	int i;
 
-	//mach = malloc(sizeof(Machine));
 	unsigned textsize;
 	unsigned datasize;
 	unsigned dataend;
@@ -71,26 +71,19 @@ void read_program(Machine *mach, const char *programfile)
 	text = malloc(textsize * sizeof(Instruction));
 	data = malloc(datasize * 4);
 
-	printf("text\n");
+	//printf("text\n");
 	for (i = 0; i < textsize; ++i) {
 		fread(&text[i]._raw, sizeof(uint32_t), 1, fp);
-		print_mem(text, textsize, data, datasize);
+		//print_mem(text, textsize, data, datasize);
 
 	}
 
-	printf("data\n");
+	//printf("data\n");
 	for (i = 0; i < dataend; ++i) {
 		fread(&data[i], sizeof(uint32_t), 1, fp);
-		print_mem(text, textsize, data, datasize);
+		//print_mem(text, textsize, data, datasize);
 	}
-
-	for (; i <= datasize; ++i) {
-		data[i] = 0;
-		printf("%#.8x\n",data[i]);
-	}
-
-	//fclose(fp);
-	printf("end\n");
+	fclose(fp);
 
 	load_program(mach, textsize, text, datasize, data, dataend);
 }
@@ -101,7 +94,7 @@ void write_word(uint32_t word, FILE * fp, int addr)
 
 	c = (addr+1) % 4 ? ", " : ",\n\t";
 	fwrite(&word, sizeof(uint32_t), 1, fp);
-	printf("%#.8x%s",word,c);
+	printf("0x%.8x%s",word,c);
 }
 
 void dump_memory(Machine *pmach)
@@ -142,7 +135,7 @@ void print_program(Machine *pmach)
 	int i;
 
 	for(i = 0; i < pmach->_textsize; ++i) {
-		printf("%#.4x: %#.8x\t", i, pmach->_text[i]._raw);
+		printf("0x%.4x: 0x%.8x\t", i, pmach->_text[i]._raw);
 		print_instruction(pmach->_text[i], i);
 		printf("\n");
 	}
@@ -154,12 +147,12 @@ void print_data(Machine *pmach)
 	Word word;
 	char c = '\t';
 
-	printf("\n*** DATA (size: %d, end = %#.8x (%d)) ***\n", pmach->_datasize, pmach->_dataend, pmach->_dataend);
+	printf("\n*** DATA (size: %d, end = 0x%.8x (%d)) ***\n", pmach->_datasize, pmach->_dataend, pmach->_dataend);
 
 	for(i = 0; i < pmach->_datasize; ++i) {
 		c = (i+1) % 3 ? '\t': '\n';
 		word = *(pmach->_data + i);
-		printf("%#.4x: %#.8x %d%c",i,word,word,c);
+		printf("0x%.4x: 0x%.8x %d%c",i,word,word,c);
 	}
 
 	printf("\n");
@@ -187,12 +180,12 @@ void print_cpu(Machine *pmach)
 			c = 'U';
 	}
 
-	printf("PC: %#.8x\tCC: %c\n\n", pmach->_pc, c);
+	printf("PC: 0x%.8x\tCC: %c\n\n", pmach->_pc, c);
 
 	for(i = 0; i < NREGISTERS; ++i) {
 		c = (i+1) % 3 ? '\t': '\n';
 		word = pmach->_registers[i];
-		printf("R%.2d: %#.8x %d%c",i,word,word,c);
+		printf("R%.2d: 0x%.8x %d%c",i,word,word,c);
 	}
 	printf("\n");
 }
@@ -202,11 +195,14 @@ void simul(Machine *pmach, bool debug)
 	bool execute = true;
 
 	while(execute) {
+		if (pmach->_pc >= pmach->_textsize) {
+			error(ERR_SEGTEXT, pmach->_pc);
+		} 
 		pmach->_pc = pmach->_pc + 1;
 		trace("Executing", pmach, pmach->_text[pmach->_pc - 1], pmach->_pc - 1);
 		execute = decode_execute(pmach, pmach->_text[pmach->_pc - 1]);
 		if (debug) {
 			debug = debug_ask(pmach);
-		}
+		}	
 	}
 }
