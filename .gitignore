@@ -28,6 +28,6 @@
 # Other files
 *~
 *.txt
-Makefile
-asm
-text_simul
+*Makefile
+*asm
+*text_simul
