@@ -31,7 +31,7 @@ const char *condition_names[] = {
 void print_op(Instruction instr) {
 	// instruction à valeur absolu
 	if (instr.instr_generic._immediate == 0 && instr.instr_generic._indexed == 0) {
-		printf("@0x%.4x", instr.instr_generic._pad);
+		printf("@%#.4x", instr.instr_generic._pad);
 	}
 	// instruction immédiate
 	else if(instr.instr_generic._immediate == 1 && instr.instr_generic._indexed == 0) {
