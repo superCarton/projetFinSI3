@@ -13,7 +13,6 @@ void load_program(Machine *pmach,
               unsigned textsize, Instruction text[textsize],
               unsigned datasize, Word data[datasize],  unsigned dataend)
 {
-	printf("load\n");
 	pmach->_textsize = textsize;
 	pmach->_dataend = dataend;
 	pmach->_datasize = datasize;
@@ -36,14 +35,14 @@ void print_mem(Instruction * text, unsigned textsize, Word * data, unsigned data
 	printf("Instruction text[] = {\n\t");
 	for (i = 0; i < textsize; ++i) {
 		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("0x%.8x%s",text[i]._raw,c);
+		printf("%#.8x%s",text[i]._raw,c);
 	}
 	printf("\n};\nunsigned textsize = %d;\n", textsize);
 
 	printf("\nWord data[] = {\n\t");
 	for (i = 0; i < datasize; ++i) {
 		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("0x%.8x%s",data[i],c);
+		printf("%#.8x%s",data[i],c);
 	}
 	printf("\n};\nunsigned datasize = %d;\n", datasize);
 }
@@ -87,7 +86,7 @@ void read_program(Machine *mach, const char *programfile)
 
 	for (; i <= datasize; ++i) {
 		data[i] = 0;
-		printf("0x%.8x\n",data[i]);
+		printf("%#.8x\n",data[i]);
 	}
 
 	//fclose(fp);
@@ -102,7 +101,7 @@ void write_word(uint32_t word, FILE * fp, int addr)
 
 	c = (addr+1) % 4 ? ", " : ",\n\t";
 	fwrite(&word, sizeof(uint32_t), 1, fp);
-	printf("0x%.8x%s",word,c);
+	printf("%#.8x%s",word,c);
 }
 
 void dump_memory(Machine *pmach)
@@ -143,7 +142,7 @@ void print_program(Machine *pmach)
 	int i;
 
 	for(i = 0; i < pmach->_textsize; ++i) {
-		printf("0x%.4x: 0x%.8x\t", i, pmach->_text[i]._raw);
+		printf("%#.4x: %#.8x\t", i, pmach->_text[i]._raw);
 		print_instruction(pmach->_text[i], i);
 		printf("\n");
 	}
@@ -155,12 +154,12 @@ void print_data(Machine *pmach)
 	Word word;
 	char c = '\t';
 
-	printf("\n*** DATA (size: %d, end = 0x%.8x (%d)) ***\n", pmach->_datasize, pmach->_dataend, pmach->_dataend);
+	printf("\n*** DATA (size: %d, end = %#.8x (%d)) ***\n", pmach->_datasize, pmach->_dataend, pmach->_dataend);
 
 	for(i = 0; i < pmach->_datasize; ++i) {
 		c = (i+1) % 3 ? '\t': '\n';
 		word = *(pmach->_data + i);
-		printf("0x%.4x: 0x%.8x %d%c",i,word,word,c);
+		printf("%#.4x: %#.8x %d%c",i,word,word,c);
 	}
 
 	printf("\n");
@@ -188,12 +187,12 @@ void print_cpu(Machine *pmach)
 			c = 'U';
 	}
 
-	printf("PC: 0x%.8x\tCC: %c\n\n", pmach->_pc, c);
+	printf("PC: %#.8x\tCC: %c\n\n", pmach->_pc, c);
 
 	for(i = 0; i < NREGISTERS; ++i) {
 		c = (i+1) % 3 ? '\t': '\n';
 		word = pmach->_registers[i];
-		printf("R%.2d: 0x%.8x %d%c",i,word,word,c);
+		printf("R%.2d: %#.8x %d%c",i,word,word,c);
 	}
 	printf("\n");
 }
