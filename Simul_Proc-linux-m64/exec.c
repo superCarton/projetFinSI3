@@ -430,7 +430,7 @@ void error_instruction(Machine *pmach, Error err){
  */
 void trace(const char *msg, Machine *pmach, Instruction instr, unsigned addr){
 
-	printf("TRACE: %s: %#.4x: ", msg, (uint32_t)addr);
+	printf("TRACE: %s: 0x%.4x: ", msg, (uint32_t)addr);
 	print_instruction(instr, addr);
 	printf("\n");
 }
