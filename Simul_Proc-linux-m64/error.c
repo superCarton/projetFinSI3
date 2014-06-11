@@ -14,28 +14,28 @@
 void error(Error err, unsigned addr){
 	switch(err){
 		case 0:
-			printf("There is no error,%0xd\n",addr);
+			printf("There is no error,%#.4x\n",addr);
 			exit(0);
 		case 1:
-			printf("Instruction inconnue,%0xd\n",addr);
+			printf("Instruction inconnue,%#.4x\n",addr);
 			exit(1);
 		case 2:
-			printf("Instruction illégale,%0xd\n",addr);
+			printf("Instruction illégale,%#.4x\n",addr);
 			exit(1);
 		case 3:
-			printf("Condition illégale,%0xd\n",addr);
+			printf("Condition illégale,%#.4x\n",addr);
 			exit(1);
 		case 4:
-			printf("Valeur immédiate interdite,%0xd\n",addr);
+			printf("Valeur immédiate interdite,%#.4x\n",addr);
 			exit(1);
 		case 5:
-			printf("Violation de taille du segment de texte,%0xd\n",addr);
+			printf("Violation de taille du segment de texte,%#.4x\n",addr);
 			exit(1);
 		case 6:
-			printf("Violation de taille du segment de données,%0xd\n",addr);
+			printf("Violation de taille du segment de données,%#.4x\n",addr);
 			exit(1);
 		case 7:
-			printf("Violation de taille du segment de pile,%0xd\n",addr);
+			printf("Violation de taille du segment de pile,%#.4x\n",addr);
 			exit(1);
 		default:
 			exit(1);
@@ -48,9 +48,5 @@ void error(Error err, unsigned addr){
 */
 void warning(Warning warn, unsigned addr){
 	if(warn==WARN_HALT)
-		printf("Fin normale du programme (sur HALT),%0xd\n",addr);
+		printf("Fin normale du programme (sur HALT): %#.4x\n",addr);
 }
-/*int main(){
-	warning(WARN_HALT,212);
-	error(ERR_CONDITION,293);	
-}*/
