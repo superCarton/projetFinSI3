@@ -1,0 +1,31 @@
+<map id="simul" name="simul">
+<area shape="rect" id="node3" href="$debug_8c.html#a3a88fdc680b7a1ae8c4c7c8ddee730ab" title="Dialogue de mise au point interactive pour l&#39;instruction courante. " alt="" coords="125,83,213,114"/>
+<area shape="rect" id="node15" href="$exec_8c.html#a41471ced34d27777447c2609173af7de" title="Décodage et exécution d&#39;une instruction. " alt="" coords="108,855,231,886"/>
+<area shape="rect" id="node19" href="$error_8c.html#a531bb138b38aef758b45a442aa53938a" title="Affichage d&#39;une erreur et fin du simulateur. " alt="" coords="987,495,1037,526"/>
+<area shape="rect" id="node95" href="$exec_8c.html#aae353f8fd7ccdbebd6c37fc0f75d12d3" title="Trace de l&#39;exécution. " alt="" coords="144,162,195,193"/>
+<area shape="rect" id="node5" href="$machine_8c.html#a87cfff30238b966cfc3c0c416d7076e9" title="Affichage des registres du CPU. " alt="" coords="295,5,369,35"/>
+<area shape="rect" id="node7" href="$machine_8c.html#a549be6eaf631d871e9357513c748640d" title="Affichage des données du programme. " alt="" coords="292,58,372,89"/>
+<area shape="rect" id="node9" href="$machine_8c.html#aba3ce4987ef379073d9d3f31debf89e7" title="Affichage des instructions du programme. " alt="" coords="281,111,383,142"/>
+<area shape="rect" id="node11" href="$instruction_8c.html#a437080d5e8c504588a47d0dba468492f" title="Impression d&#39;une instruction sous forme lisible (désassemblage) " alt="" coords="447,137,559,167"/>
+<area shape="rect" id="node13" href="$instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02" title="Impression de la variable de l&#39;instruction. " alt="" coords="664,137,731,167"/>
+<area shape="rect" id="node17" href="$exec_8c.html#a4fefa94a03e1818a47f20c5c09746104" title="Instruction illégale. " alt="" coords="823,777,937,807"/>
+<area shape="rect" id="node21" href="$exec_8c.html#a0ac7c1ab906371a029e5ed021c089cce" title="Décodage et exécution de ADD. " alt="" coords="293,697,371,727"/>
+<area shape="rect" id="node35" href="$exec_8c.html#a00aa64866879cc41c32051ef73c7a3aa" title="Décodage et exécution de BRANCH. " alt="" coords="285,1042,379,1073"/>
+<area shape="rect" id="node42" href="$exec_8c.html#a3fe33d4354431bbc2646d08257c55a35" title="Décodage et exécution de CALL. " alt="" coords="295,1095,369,1126"/>
+<area shape="rect" id="node50" href="$exec_8c.html#a02c9a6fabeac86a4b679e3f585808dbe" title="Décodage et exécution de HALT. " alt="" coords="295,989,369,1019"/>
+<area shape="rect" id="node54" href="$exec_8c.html#ab40b10763749132b921d3b9fe49cde06" title="Exécution de ILLOP. " alt="" coords="659,1245,736,1275"/>
+<area shape="rect" id="node57" href="$exec_8c.html#a0d1cdd60b7fd98abbff07d9ffb0c8c4b" title="Décodage et exécution de LOAD. " alt="" coords="292,594,372,625"/>
+<area shape="rect" id="node64" href="$exec_8c.html#a3476c6828af1dcac73ab6c8d5ea15231" title="Exécution de NOP. " alt="" coords="295,1149,369,1179"/>
+<area shape="rect" id="node66" href="$exec_8c.html#a967b6447ca54a2ee442e954cd503d095" title="Décodage et exécution de POP. " alt="" coords="295,882,369,913"/>
+<area shape="rect" id="node72" href="$exec_8c.html#afdf5b5152ce6b1ad926f44874f8878df" title="Décodage et exécution de PUSH. " alt="" coords="292,829,372,859"/>
+<area shape="rect" id="node78" href="$exec_8c.html#af62262bc6966f7ebb4252a51d31658a9" title="Décodage et exécution de RET. " alt="" coords="299,935,365,966"/>
+<area shape="rect" id="node81" href="$exec_8c.html#aa7a0308a7fe9c0ffeaa5353be8e35f8f" title="Décodage et exécution de STORE. " alt="" coords="291,775,373,806"/>
+<area shape="rect" id="node87" href="$exec_8c.html#a1afc17284230198815489bb487115efc" title="Décodage et exécution de SUB. " alt="" coords="295,517,369,547"/>
+<area shape="rect" id="node23" href="$exec_8c.html#adde32d12a825e7f205372fed75ae9ca5" title="Calcule l&#39;adresse en fonction de l&#39;instruction. " alt="" coords="440,829,565,859"/>
+<area shape="rect" id="node25" href="$exec_8c.html#a48d0501d3e69fad96ebe1fee57b1908c" title="Verifie que l&#39;on accede pas à un registre inconnu. " alt="" coords="623,595,772,626"/>
+<area shape="rect" id="node28" href="$exec_8c.html#a3dc244606c36ff1cf2b7df07bf39690c" title="Verifie que l&#39;on accede pas en dehors du segment de données. " alt="" coords="432,725,573,755"/>
+<area shape="rect" id="node33" href="$exec_8c.html#ad450eaae490bbb12b1b11e8d92ef1c60" title="Assignation du code operande. " alt="" coords="472,469,533,499"/>
+<area shape="rect" id="node38" href="$exec_8c.html#a87edd928ec949ab799e545a72bf919ca" title="Verification du code operande. " alt="" coords="468,1141,537,1171"/>
+<area shape="rect" id="node45" href="$exec_8c.html#a9b1c8f71c32c765a47cd0fde4d4fac64" title="Verifie que l&#39;on accede pas en dehors de la pile, ou que la pile est pleine. " alt="" coords="464,983,541,1014"/>
+<area shape="rect" id="node52" href="$error_8c.html#aec2872edfc57849ea2557178dc2b2673" title="Affichage d&#39;un avertissement. " alt="" coords="468,1037,537,1067"/>
+</map>

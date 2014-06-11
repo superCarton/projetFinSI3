@@ -1,0 +1,7 @@
+<map id="debug_ask" name="debug_ask">
+<area shape="rect" id="node3" href="$machine_8c.html#a87cfff30238b966cfc3c0c416d7076e9" title="Affichage des registres du CPU. " alt="" coords="159,5,233,35"/>
+<area shape="rect" id="node5" href="$machine_8c.html#a549be6eaf631d871e9357513c748640d" title="Affichage des données du programme. " alt="" coords="156,58,236,89"/>
+<area shape="rect" id="node7" href="$machine_8c.html#aba3ce4987ef379073d9d3f31debf89e7" title="Affichage des instructions du programme. " alt="" coords="145,111,247,142"/>
+<area shape="rect" id="node9" href="$instruction_8c.html#a437080d5e8c504588a47d0dba468492f" title="Impression d&#39;une instruction sous forme lisible (désassemblage) " alt="" coords="296,111,408,142"/>
+<area shape="rect" id="node11" href="$instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02" title="Impression de la variable de l&#39;instruction. " alt="" coords="457,111,524,142"/>
+</map>

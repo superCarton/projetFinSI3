@@ -1,0 +1,5 @@
+<map id="error.h" name="error.h">
+<area shape="rect" id="node3" href="$error_8c.html" title="error.c" alt="" coords="5,86,64,117"/>
+<area shape="rect" id="node5" href="$exec_8c.html" title="Décode, exécute et affiche les instructions. " alt="" coords="88,86,149,117"/>
+<area shape="rect" id="node7" href="$machine_8c.html" title="Affiche l&#39;état de la mémoire et simule l&#39;exécution d&#39;un programme. " alt="" coords="173,86,256,117"/>
+</map>

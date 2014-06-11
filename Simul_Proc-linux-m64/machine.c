@@ -1,5 +1,7 @@
 /*!
  * \file machine.c
+ * \brief Affiche l'état de la mémoire et simule l'exécution d'un programme
+ * \author Mathieu Boutelier
  */
 
 #include <stdio.h>
@@ -10,6 +12,22 @@
 #include "exec.h"
 #include "error.h"
 
+//! Chargement d'un programme
+/*!
+ * En plus d'initialiser les données fournis en paramètre,
+ * on affecte les valeurs suivantes aux autres segments :
+ *	 	- Le compteur ordinal PC est réinitialisé à l'adresse 0 du programme.
+ *		- Le code condition est initialisé au code inconnu CC_U.
+ *		- Les registres sont réinitialisés à la valeur 0.
+ *		- Le registre SP est initialisé à la valeur de la tête de pile datasize - 1.
+ *
+ * \param pmach la machine en cours d'exécution
+ * \param textsize taille utile du segment de texte
+ * \param text le contenu du segment de texte
+ * \param datasize taille utile du segment de données
+ * \param data le contenu initial du segment de texte
+ *
+ */
 void load_program(Machine *pmach,
               unsigned textsize, Instruction text[textsize],
               unsigned datasize, Word data[datasize],  unsigned dataend)
@@ -25,109 +43,126 @@ void load_program(Machine *pmach,
 	for (int i = 0; i < NREGISTERS; ++i) {
 		pmach->_registers[i] = 0;
 	}
-
+	
 	pmach->_sp = datasize - 1;
 }
 
-void print_mem(Instruction * text, unsigned textsize, Word * data, unsigned datasize)
-{
-	char *c;
-	int i;
-	printf("Instruction text[] = {\n\t");
-	for (i = 0; i < textsize; ++i) {
-		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("0x%.8x%s",text[i]._raw,c);
-	}
-	printf("\n};\nunsigned textsize = %d;\n", textsize);
-
-	printf("\nWord data[] = {\n\t");
-	for (i = 0; i < datasize; ++i) {
-		c = (i+1) % 4 ? ", " : ",\n\t";
-		printf("0x%.8x%s",data[i],c);
-	}
-	printf("\n};\nunsigned datasize = %d;\n", datasize);
-}
-
+//! Lecture d'un programme depuis un fichier binaire
+/*!
+ * On initialise les segments aux valeurs lu dans le fichier
+ * dans l'odre décrit dans machine.h.
+ *
+ * On initialise ensuite la machine à l'aide de la fonction load_program()
+ *
+ * \param pmach la machine à simuler
+ * \param programfile le nom du fichier binaire
+ *
+ */
 void read_program(Machine *mach, const char *programfile)
 {
+	// Pointeur sur le fichier binaire
 	FILE * fp;
 	int i;
-
 	unsigned textsize;
 	unsigned datasize;
 	unsigned dataend;
 	Instruction * text;
 	Word * data;
 
+	// On ouvre le fichier en lecture
 	if ((fp = fopen(programfile, "r")) == NULL) {
 		fprintf(stderr, "Ouverture du fichier impossible.\n");
 		exit(1);
 	}
 
+	// Initialisation de textsize
 	fread(&textsize, sizeof(unsigned), 1, fp);
+
+	// Initialisation de datasize
 	fread(&datasize, sizeof(unsigned), 1, fp);
+
+	// Initialisation de dataend
 	fread(&dataend, sizeof(unsigned), 1, fp);
 
 	text = malloc(textsize * sizeof(Instruction));
 	data = malloc(datasize * 4);
 
-	//printf("text\n");
+	// Initialisation du segment de texte
 	for (i = 0; i < textsize; ++i) {
 		fread(&text[i]._raw, sizeof(uint32_t), 1, fp);
-		//print_mem(text, textsize, data, datasize);
-
 	}
 
-	//printf("data\n");
+	// Initialisation du segment de donnée
 	for (i = 0; i < dataend; ++i) {
 		fread(&data[i], sizeof(uint32_t), 1, fp);
-		//print_mem(text, textsize, data, datasize);
 	}
+	
+	// Fermeture du fichier
 	fclose(fp);
 
+	// Initialisation des données dans la machine
 	load_program(mach, textsize, text, datasize, data, dataend);
 }
 
-void write_word(uint32_t word, FILE * fp, int addr)
-{
-	char *c;
-
-	c = (addr+1) % 4 ? ", " : ",\n\t";
-	fwrite(&word, sizeof(uint32_t), 1, fp);
-	printf("0x%.8x%s",word,c);
-}
-
+//! Affichage du programme et des données
+/*!
+ * Affichage des données et des instructions sous forme héxadécimal.
+ * Dump binaire dans le fichier dump.bin, on peut exécuter ce programme
+ * à l'aide de l'option -b de text_simul.c.
+ *
+ * On écrit les données dans l'ordre de lecture de read_program().
+ *
+ * \param pmach la machine en cours d'exécution
+ *
+ */
 void dump_memory(Machine *pmach)
 {
 	FILE * fp;
 	int i;
+	char *c;
 
-	// Ouverture du fichier dump.bin
+	// Ouverture du fichier dump.bin en écriture
 	if ((fp = fopen("dump.bin", "w")) == NULL) {
 		fprintf(stderr, "Ouverture du fichier impossible.\n");
 		exit(1);
 	}
 
+	// Ecriture de la taille du segment texte
 	fwrite(&pmach->_textsize, sizeof(int), 1, fp);
+
+	// Ecriture de la taille du segment de données
 	fwrite(&pmach->_datasize, sizeof(int), 1, fp);
+
+	// Ecriture de l'adresse de fin des données
 	fwrite(&pmach->_dataend, sizeof(int), 1, fp);
 
+	// Ecriture du segment texte
 	printf("Instruction text[] = {\n\t");
 	for (i = 0; i < pmach->_textsize; ++i) {
-		write_word(pmach->_text[i]._raw, fp, i);
+		c = (i+1) % 4 ? ", " : ",\n\t";
+		fwrite(&pmach->_text[i]._raw, sizeof(uint32_t), 1, fp);
+		printf("0x%.8x%s",pmach->_text[i]._raw,c);
 	}
 	printf("\n};\nunsigned textsize = %d;\n", pmach->_textsize);
 
+	// Ecriture du segment de données
 	printf("\nWord data[] = {\n\t");
 	for (i = 0; i < pmach->_datasize; ++i) {
-		write_word(pmach->_data[i], fp, i);
+		c = (i+1) % 4 ? ", " : ",\n\t";
+		fwrite(&pmach->_data[i], sizeof(uint32_t), 1, fp);
+		printf("0x%.8x%s",pmach->_data[i],c);
 	}
 	printf("\n};\nunsigned datasize = %d;\n", pmach->_datasize);
 	printf("unsigned dataend = %d;\n", pmach->_dataend);
 
+	// Fermeture du fichier
 	fclose(fp);
 }
 
+//! Affichage des instructions du programme
+/*!
+ * \param pmach la machine en cours d'exécution
+ */
 void print_program(Machine *pmach)
 {
 	printf("\n*** PROGRAM (size: %d) ***\n", pmach->_textsize);
@@ -141,6 +176,10 @@ void print_program(Machine *pmach)
 	}
 }
 
+//! Affichage des données du programme
+/*!
+ * \param pmach la machine en cours d'exécution
+ */
 void print_data(Machine *pmach)
 {
 	int i;
@@ -158,6 +197,10 @@ void print_data(Machine *pmach)
 	printf("\n");
 }
 
+//! Affichage des registres du CPU
+/*!
+ * \param pmach la machine en cours d'exécution
+ */
 void print_cpu(Machine *pmach)
 {
 	char c;
@@ -190,6 +233,22 @@ void print_cpu(Machine *pmach)
 	printf("\n");
 }
 
+//! Simulation
+/*!
+ * Appel de la fonction error() si la valeur de pc est plus grande
+ * que la valeur de textsize.
+ *
+ * Affichage de la ligne à exécuter avec la fonction trace().
+ *
+ * Décodage et exécution de l'instruction avec la fonction decode_execute().
+ *
+ * Lancement de la fonction de débugage avec debug_ask().
+ *
+ * On incrémente la valeur de PC à chaque itération de la boucle. 
+ *
+ * \param pmach la machine en cours d'exécution
+ * \param debug mode de mise au point (pas à apas) ?
+ */
 void simul(Machine *pmach, bool debug)
 {
 	bool execute = true;

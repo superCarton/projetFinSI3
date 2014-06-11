@@ -1,0 +1,7 @@
+<map id="machine.c" name="machine.c">
+<area shape="rect" id="node7" href="$machine_8h.html" title="Description de la structure du processeur et de sa mémoire. " alt="" coords="264,166,347,197"/>
+<area shape="rect" id="node16" href="$debug_8h.html" title="Fonctions de mise au point interactive. " alt="" coords="360,86,429,117"/>
+<area shape="rect" id="node20" href="$exec_8h.html" title="Exécution d&#39;une instruction. " alt="" coords="275,86,336,117"/>
+<area shape="rect" id="node23" href="$error_8h.html" title="Messages et codes d&#39;erreurs. " alt="" coords="141,86,200,117"/>
+<area shape="rect" id="node11" href="$instruction_8h.html" title="Description du jeu d&#39;instruction. " alt="" coords="216,246,307,277"/>
+</map>

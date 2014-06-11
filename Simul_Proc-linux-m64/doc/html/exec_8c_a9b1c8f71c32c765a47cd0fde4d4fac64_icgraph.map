@@ -1,0 +1,9 @@
+<map id="check_sp" name="check_sp">
+<area shape="rect" id="node3" href="$exec_8c.html#a3fe33d4354431bbc2646d08257c55a35" title="Décodage et exécution de CALL. " alt="" coords="137,5,212,35"/>
+<area shape="rect" id="node11" href="$exec_8c.html#a967b6447ca54a2ee442e954cd503d095" title="Décodage et exécution de POP. " alt="" coords="137,58,212,89"/>
+<area shape="rect" id="node14" href="$exec_8c.html#afdf5b5152ce6b1ad926f44874f8878df" title="Décodage et exécution de PUSH. " alt="" coords="135,111,215,142"/>
+<area shape="rect" id="node17" href="$exec_8c.html#af62262bc6966f7ebb4252a51d31658a9" title="Décodage et exécution de RET. " alt="" coords="141,165,208,195"/>
+<area shape="rect" id="node5" href="$exec_8h.html#a41471ced34d27777447c2609173af7de" title="Décodage et exécution d&#39;une instruction. " alt="" coords="265,85,388,115"/>
+<area shape="rect" id="node7" href="$machine_8h.html#ad0bfa0ce7434b963eea888d7b847ac3b" title="Simulation. " alt="" coords="437,85,491,115"/>
+<area shape="rect" id="node9" href="$test__simul_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Programme de test. " alt="" coords="539,85,589,115"/>
+</map>

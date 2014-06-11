@@ -1,0 +1,14 @@
+<map id="check_index_register" name="check_index_register">
+<area shape="rect" id="node3" href="$exec_8c.html#adde32d12a825e7f205372fed75ae9ca5" title="Calcule l&#39;adresse en fonction de l&#39;instruction. " alt="" coords="205,205,331,235"/>
+<area shape="rect" id="node5" href="$exec_8c.html#a0ac7c1ab906371a029e5ed021c089cce" title="Décodage et exécution de ADD. " alt="" coords="387,5,464,35"/>
+<area shape="rect" id="node19" href="$exec_8c.html#a0d1cdd60b7fd98abbff07d9ffb0c8c4b" title="Décodage et exécution de LOAD. " alt="" coords="385,58,465,89"/>
+<area shape="rect" id="node28" href="$exec_8c.html#aa7a0308a7fe9c0ffeaa5353be8e35f8f" title="Décodage et exécution de STORE. " alt="" coords="384,325,467,355"/>
+<area shape="rect" id="node31" href="$exec_8c.html#a1afc17284230198815489bb487115efc" title="Décodage et exécution de SUB. " alt="" coords="388,378,463,409"/>
+<area shape="rect" id="node13" href="$exec_8c.html#a00aa64866879cc41c32051ef73c7a3aa" title="Décodage et exécution de BRANCH. " alt="" coords="379,111,472,142"/>
+<area shape="rect" id="node16" href="$exec_8c.html#a3fe33d4354431bbc2646d08257c55a35" title="Décodage et exécution de CALL. " alt="" coords="388,165,463,195"/>
+<area shape="rect" id="node22" href="$exec_8c.html#a967b6447ca54a2ee442e954cd503d095" title="Décodage et exécution de POP. " alt="" coords="388,218,463,249"/>
+<area shape="rect" id="node25" href="$exec_8c.html#afdf5b5152ce6b1ad926f44874f8878df" title="Décodage et exécution de PUSH. " alt="" coords="385,271,465,302"/>
+<area shape="rect" id="node7" href="$exec_8h.html#a41471ced34d27777447c2609173af7de" title="Décodage et exécution d&#39;une instruction. " alt="" coords="521,191,644,222"/>
+<area shape="rect" id="node9" href="$machine_8h.html#ad0bfa0ce7434b963eea888d7b847ac3b" title="Simulation. " alt="" coords="693,191,747,222"/>
+<area shape="rect" id="node11" href="$test__simul_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Programme de test. " alt="" coords="795,191,845,222"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="exec.h" name="exec.h">
+<area shape="rect" id="node3" href="$exec_8c.html" title="Décode, exécute et affiche les instructions. " alt="" coords="5,86,67,117"/>
+<area shape="rect" id="node5" href="$machine_8c.html" title="Affiche l&#39;état de la mémoire et simule l&#39;exécution d&#39;un programme. " alt="" coords="91,86,173,117"/>
+</map>
