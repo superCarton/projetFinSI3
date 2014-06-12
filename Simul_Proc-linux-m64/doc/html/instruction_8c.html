@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.7"/>
+<title>Simulateur du jeu d&#39;instructions d&#39;un processeur simple: Référence du fichier instruction.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Simulateur du jeu d&#39;instructions d&#39;un processeur simple
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.7 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Structures&#160;de&#160;données</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Variables&#160;globale</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('instruction_8c.html','');});
+</script>
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier instruction.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Description du jeu d'instruction.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="instruction_8h_source.html">instruction.h</a>&quot;</code><br />
+</div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Graphe des dépendances par inclusion de instruction.c:</div>
+<div id="dynsection-0-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-0-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="instruction_8c__incl.png" border="0" usemap="#instruction_8c" alt=""/></div>
+<map name="instruction_8c" id="instruction_8c">
+<area shape="rect" id="node9" href="instruction_8h.html" title="Description du jeu d&#39;instruction. " alt="" coords="40,86,131,117"/></map>
+</div>
+</div>
+<p><a href="instruction_8c_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ac767ea3efb2ab451d4d1641b14138d02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02">print_op</a> (<a class="el" href="unionInstruction.html">Instruction</a> instr)</td></tr>
+<tr class="memdesc:ac767ea3efb2ab451d4d1641b14138d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impression de la variable de l'instruction.  <a href="#ac767ea3efb2ab451d4d1641b14138d02">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac767ea3efb2ab451d4d1641b14138d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a437080d5e8c504588a47d0dba468492f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instruction_8c.html#a437080d5e8c504588a47d0dba468492f">print_instruction</a> (<a class="el" href="unionInstruction.html">Instruction</a> instr, unsigned addr)</td></tr>
+<tr class="memdesc:a437080d5e8c504588a47d0dba468492f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impression d'une instruction sous forme lisible (désassemblage)  <a href="#a437080d5e8c504588a47d0dba468492f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a437080d5e8c504588a47d0dba468492f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae5e0c6bef1ffc3adc867e3ea4b9a57c3"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a> []</td></tr>
+<tr class="memdesc:ae5e0c6bef1ffc3adc867e3ea4b9a57c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forme imprimable des codes opérations.  <a href="#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae5e0c6bef1ffc3adc867e3ea4b9a57c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cf35570c7b75e596c642031544688e0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="instruction_8c.html#a4cf35570c7b75e596c642031544688e0">condition_names</a> []</td></tr>
+<tr class="memdesc:a4cf35570c7b75e596c642031544688e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forme imprimable des conditions.  <a href="#a4cf35570c7b75e596c642031544688e0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4cf35570c7b75e596c642031544688e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Description du jeu d'instruction. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Jonathan Pujol </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>11 juin 2014 </dd></dl>
+
+<p>Définition dans le fichier <a class="el" href="instruction_8c_source.html">instruction.c</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a437080d5e8c504588a47d0dba468492f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_instruction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionInstruction.html">Instruction</a>&#160;</td>
+          <td class="paramname"><em>instr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>addr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Impression d'une instruction sous forme lisible (désassemblage) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instr</td><td>l'instruction à imprimer </td></tr>
+    <tr><td class="paramname">addr</td><td>son adresse </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="instruction_8c_source.html#l00051">51</a> du fichier <a class="el" href="instruction_8c_source.html">instruction.c</a>.</p>
+
+<p>Références <a class="el" href="instruction_8h_source.html#l00060">Instruction::_cop</a>, <a class="el" href="instruction_8h_source.html#l00063">Instruction::_regcond</a>, <a class="el" href="instruction_8h_source.html#l00019">ADD</a>, <a class="el" href="instruction_8c_source.html#l00020">condition_names</a>, <a class="el" href="instruction_8c_source.html#l00014">cop_names</a>, <a class="el" href="instruction_8h_source.html#l00026">HALT</a>, <a class="el" href="instruction_8h_source.html#l00015">ILLOP</a>, <a class="el" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">Instruction::instr_generic</a>, <a class="el" href="instruction_8h_source.html#l00017">LOAD</a>, <a class="el" href="instruction_8h_source.html#l00016">NOP</a>, <a class="el" href="instruction_8h_source.html#l00025">POP</a>, <a class="el" href="instruction_8c_source.html#l00031">print_op()</a>, <a class="el" href="instruction_8h_source.html#l00024">PUSH</a>, <a class="el" href="instruction_8h_source.html#l00023">RET</a>, <a class="el" href="instruction_8h_source.html#l00018">STORE</a>, et <a class="el" href="instruction_8h_source.html#l00020">SUB</a>.</p>
+
+<p>Référencé par <a class="el" href="machine_8c_source.html#l00166">print_program()</a>, et <a class="el" href="exec_8c_source.html#l00431">trace()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                                         {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">switch</span> ( instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">_cop</a>) {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ab2510768eaba5e52ba71678e19a65464">RET</a> :</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6aa2fd6bbb0c07e28e835ba595e64df78c">HALT</a> :</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ad1bcea5caa46727ab4e411cffaa236f2">ILLOP</a> :</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6af811bef354b292ff0713c50d7652c026">NOP</a> :</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            printf(<span class="stringliteral">&quot;%s&quot;</span>, <a class="code" href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a>[instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">_cop</a>]);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a972dbcdf74cff71e20bdcfb53be9c391">LOAD</a> :</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6afeb01cb4572ba190cd7932e49446c480">STORE</a> :</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6acfcf145f2788bf340ff3f3098bc54909">ADD</a> :</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a12b733d4941495e86811fe6ceeeff9da">SUB</a> : </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            printf(<span class="stringliteral">&quot;%s R%.2d, &quot;</span>, <a class="code" href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a>[instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">_cop</a>], instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a8f5f38c91d2c3443dcd962101bfe19e2">_regcond</a>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02">print_op</a>(instr);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ad263caec619c4d99e4684ba0fabd9493">PUSH</a> :</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a061dcf4785583d8653942f2d252174fa">POP</a> :</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            printf(<span class="stringliteral">&quot;%s &quot;</span>, <a class="code" href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a>[instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">_cop</a>]);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02">print_op</a>(instr);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">default</span> :</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            printf(<span class="stringliteral">&quot;%s %s, &quot;</span>, <a class="code" href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a>[instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">_cop</a>], <a class="code" href="instruction_8c.html#a4cf35570c7b75e596c642031544688e0">condition_names</a>[instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a8f5f38c91d2c3443dcd962101bfe19e2">_regcond</a>]);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02">print_op</a>(instr);    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}<div class="ttc" id="instruction_8c_html_a4cf35570c7b75e596c642031544688e0"><div class="ttname"><a href="instruction_8c.html#a4cf35570c7b75e596c642031544688e0">condition_names</a></div><div class="ttdeci">const char * condition_names[]</div><div class="ttdoc">Forme imprimable des conditions. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8c_source.html#l00020">instruction.c:20</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6ad263caec619c4d99e4684ba0fabd9493"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ad263caec619c4d99e4684ba0fabd9493">PUSH</a></div><div class="ttdoc">Empilement sur la pile d&#39;exécution. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00024">instruction.h:24</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6afeb01cb4572ba190cd7932e49446c480"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6afeb01cb4572ba190cd7932e49446c480">STORE</a></div><div class="ttdoc">Rangement du contenu d&#39;un registre. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00018">instruction.h:18</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6a061dcf4785583d8653942f2d252174fa"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a061dcf4785583d8653942f2d252174fa">POP</a></div><div class="ttdoc">Dépilement de la pile d&#39;exécution. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00025">instruction.h:25</a></div></div>
+<div class="ttc" id="instruction_8c_html_ae5e0c6bef1ffc3adc867e3ea4b9a57c3"><div class="ttname"><a href="instruction_8c.html#ae5e0c6bef1ffc3adc867e3ea4b9a57c3">cop_names</a></div><div class="ttdeci">const char * cop_names[]</div><div class="ttdoc">Forme imprimable des codes opérations. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8c_source.html#l00014">instruction.c:14</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6a972dbcdf74cff71e20bdcfb53be9c391"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a972dbcdf74cff71e20bdcfb53be9c391">LOAD</a></div><div class="ttdoc">Chargement d&#39;un registre. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00017">instruction.h:17</a></div></div>
+<div class="ttc" id="unionInstruction_html_a5682ffc6f762bda7a50e41ea9042cb39"><div class="ttname"><a href="unionInstruction.html#a5682ffc6f762bda7a50e41ea9042cb39">Instruction::_cop</a></div><div class="ttdeci">Code_Op _cop</div><div class="ttdoc">Code opération. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00060">instruction.h:60</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6acfcf145f2788bf340ff3f3098bc54909"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6acfcf145f2788bf340ff3f3098bc54909">ADD</a></div><div class="ttdoc">Addition à un registre. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00019">instruction.h:19</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6aa2fd6bbb0c07e28e835ba595e64df78c"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6aa2fd6bbb0c07e28e835ba595e64df78c">HALT</a></div><div class="ttdoc">Arrêt (normal) du programme. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00026">instruction.h:26</a></div></div>
+<div class="ttc" id="unionInstruction_html_a8f5f38c91d2c3443dcd962101bfe19e2"><div class="ttname"><a href="unionInstruction.html#a8f5f38c91d2c3443dcd962101bfe19e2">Instruction::_regcond</a></div><div class="ttdeci">unsigned _regcond</div><div class="ttdoc">Numéro de registre ou condition. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00063">instruction.h:63</a></div></div>
+<div class="ttc" id="instruction_8c_html_ac767ea3efb2ab451d4d1641b14138d02"><div class="ttname"><a href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02">print_op</a></div><div class="ttdeci">void print_op(Instruction instr)</div><div class="ttdoc">Impression de la variable de l&#39;instruction. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8c_source.html#l00031">instruction.c:31</a></div></div>
+<div class="ttc" id="unionInstruction_html_a5903d65905a4fd4f8c917ed17d9d9211"><div class="ttname"><a href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">Instruction::instr_generic</a></div><div class="ttdeci">struct Instruction::@0 instr_generic</div><div class="ttdoc">Format générique : les premiers champs sont communs. </div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6ab2510768eaba5e52ba71678e19a65464"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ab2510768eaba5e52ba71678e19a65464">RET</a></div><div class="ttdoc">Retour de sous-programme. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00023">instruction.h:23</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6ad1bcea5caa46727ab4e411cffaa236f2"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6ad1bcea5caa46727ab4e411cffaa236f2">ILLOP</a></div><div class="ttdoc">Instruction illégale. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00015">instruction.h:15</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6af811bef354b292ff0713c50d7652c026"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6af811bef354b292ff0713c50d7652c026">NOP</a></div><div class="ttdoc">Instruction sans effet. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00016">instruction.h:16</a></div></div>
+<div class="ttc" id="instruction_8h_html_a5ead9d7413d75b14e895c945daa82de6a12b733d4941495e86811fe6ceeeff9da"><div class="ttname"><a href="instruction_8h.html#a5ead9d7413d75b14e895c945daa82de6a12b733d4941495e86811fe6ceeeff9da">SUB</a></div><div class="ttdoc">Soustraction d&#39;un registre. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00020">instruction.h:20</a></div></div>
+</div><!-- fragment -->
+<p><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Voici le graphe d'appel pour cette fonction :</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="instruction_8c_a437080d5e8c504588a47d0dba468492f_cgraph.png" border="0" usemap="#instruction_8c_a437080d5e8c504588a47d0dba468492f_cgraph" alt=""/></div>
+<map name="instruction_8c_a437080d5e8c504588a47d0dba468492f_cgraph" id="instruction_8c_a437080d5e8c504588a47d0dba468492f_cgraph">
+<area shape="rect" id="node3" href="instruction_8c.html#ac767ea3efb2ab451d4d1641b14138d02" title="Impression de la variable de l&#39;instruction. " alt="" coords="167,5,233,35"/></map>
+</div>
+</p>
+
+<p><div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Voici le graphe des appelants de cette fonction :</div>
+<div id="dynsection-2-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-2-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="instruction_8c_a437080d5e8c504588a47d0dba468492f_icgraph.png" border="0" usemap="#instruction_8c_a437080d5e8c504588a47d0dba468492f_icgraph" alt=""/></div>
+<map name="instruction_8c_a437080d5e8c504588a47d0dba468492f_icgraph" id="instruction_8c_a437080d5e8c504588a47d0dba468492f_icgraph">
+<area shape="rect" id="node3" href="machine_8h.html#aba3ce4987ef379073d9d3f31debf89e7" title="Affichage des instructions du programme. " alt="" coords="167,30,268,61"/><area shape="rect" id="node12" href="exec_8h.html#aae353f8fd7ccdbebd6c37fc0f75d12d3" title="Trace de l&#39;exécution. " alt="" coords="337,83,388,114"/><area shape="rect" id="node5" href="debug_8h.html#a3a88fdc680b7a1ae8c4c7c8ddee730ab" title="Dialogue de mise au point interactive pour l&#39;instruction courante. " alt="" coords="319,30,407,61"/><area shape="rect" id="node9" href="test__simul_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Programme de test. " alt="" coords="557,5,608,35"/><area shape="rect" id="node7" href="machine_8h.html#ad0bfa0ce7434b963eea888d7b847ac3b" title="Simulation. " alt="" coords="456,30,509,61"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac767ea3efb2ab451d4d1641b14138d02"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_op </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="unionInstruction.html">Instruction</a>&#160;</td>
+          <td class="paramname"><em>instr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Impression de la variable de l'instruction. </p>
+<p>La fonction print_op permet d'imprimer la variable de l'instruction passée en paramètre. Elle regarde de quel type est l'instruction (direct, indirect, ...) et choisi le mode d'affichage en fonction.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">instr</td><td>l'instruction dont on doit imprimer la variable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Définition à la ligne <a class="el" href="instruction_8c_source.html#l00031">31</a> du fichier <a class="el" href="instruction_8c_source.html">instruction.c</a>.</p>
+
+<p>Références <a class="el" href="instruction_8h_source.html#l00061">Instruction::_immediate</a>, <a class="el" href="instruction_8h_source.html#l00062">Instruction::_indexed</a>, <a class="el" href="instruction_8h_source.html#l00095">Instruction::_offset</a>, <a class="el" href="instruction_8h_source.html#l00064">Instruction::_pad</a>, <a class="el" href="instruction_8h_source.html#l00094">Instruction::_rindex</a>, <a class="el" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">Instruction::instr_generic</a>, et <a class="el" href="unionInstruction.html#a095e13c73c8bba3d15603a390804d09b">Instruction::instr_indexed</a>.</p>
+
+<p>Référencé par <a class="el" href="instruction_8c_source.html#l00051">print_instruction()</a>.</p>
+<div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                 {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// instruction à valeur absolu</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a350ef9c256c24b90297798b15164db13">_immediate</a> == 0 &amp;&amp; instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5d3ae850423e6d91f7fe54111c3f766c">_indexed</a> == 0) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        printf(<span class="stringliteral">&quot;@0x%.4x&quot;</span>, instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#ab956d518131bd4518b4c850be49e4025">_pad</a>);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">// instruction immédiate</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a350ef9c256c24b90297798b15164db13">_immediate</a> == 1 &amp;&amp; instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5d3ae850423e6d91f7fe54111c3f766c">_indexed</a> == 0) {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        printf(<span class="stringliteral">&quot;#%u&quot;</span>, instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#ab956d518131bd4518b4c850be49e4025">_pad</a>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// instruction à une adresse relative indexée</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a350ef9c256c24b90297798b15164db13">_immediate</a> == 0 &amp;&amp; instr.<a class="code" href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">instr_generic</a>.<a class="code" href="unionInstruction.html#a5d3ae850423e6d91f7fe54111c3f766c">_indexed</a> == 1) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        printf(<span class="stringliteral">&quot;%d[R%.2u]&quot;</span>, instr.<a class="code" href="unionInstruction.html#a095e13c73c8bba3d15603a390804d09b">instr_indexed</a>.<a class="code" href="unionInstruction.html#abb5834e4f338c8e0411467130a1a4b50">_offset</a>, instr.<a class="code" href="unionInstruction.html#a095e13c73c8bba3d15603a390804d09b">instr_indexed</a>.<a class="code" href="unionInstruction.html#a057a22a377dd83f2e63a8b6e34df7164">_rindex</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="ttc" id="unionInstruction_html_a5d3ae850423e6d91f7fe54111c3f766c"><div class="ttname"><a href="unionInstruction.html#a5d3ae850423e6d91f7fe54111c3f766c">Instruction::_indexed</a></div><div class="ttdeci">bool _indexed</div><div class="ttdoc">Adressage indirect ? </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00062">instruction.h:62</a></div></div>
+<div class="ttc" id="unionInstruction_html_a095e13c73c8bba3d15603a390804d09b"><div class="ttname"><a href="unionInstruction.html#a095e13c73c8bba3d15603a390804d09b">Instruction::instr_indexed</a></div><div class="ttdeci">struct Instruction::@3 instr_indexed</div><div class="ttdoc">Format d&#39;une instruction à adressage indéxé </div></div>
+<div class="ttc" id="unionInstruction_html_abb5834e4f338c8e0411467130a1a4b50"><div class="ttname"><a href="unionInstruction.html#abb5834e4f338c8e0411467130a1a4b50">Instruction::_offset</a></div><div class="ttdeci">signed int _offset</div><div class="ttdoc">Déplacement. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00095">instruction.h:95</a></div></div>
+<div class="ttc" id="unionInstruction_html_a057a22a377dd83f2e63a8b6e34df7164"><div class="ttname"><a href="unionInstruction.html#a057a22a377dd83f2e63a8b6e34df7164">Instruction::_rindex</a></div><div class="ttdeci">unsigned _rindex</div><div class="ttdoc">Numéro du registre d&#39;index. </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00094">instruction.h:94</a></div></div>
+<div class="ttc" id="unionInstruction_html_a350ef9c256c24b90297798b15164db13"><div class="ttname"><a href="unionInstruction.html#a350ef9c256c24b90297798b15164db13">Instruction::_immediate</a></div><div class="ttdeci">bool _immediate</div><div class="ttdoc">Adressage immédiat ? </div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00061">instruction.h:61</a></div></div>
+<div class="ttc" id="unionInstruction_html_a5903d65905a4fd4f8c917ed17d9d9211"><div class="ttname"><a href="unionInstruction.html#a5903d65905a4fd4f8c917ed17d9d9211">Instruction::instr_generic</a></div><div class="ttdeci">struct Instruction::@0 instr_generic</div><div class="ttdoc">Format générique : les premiers champs sont communs. </div></div>
+<div class="ttc" id="unionInstruction_html_ab956d518131bd4518b4c850be49e4025"><div class="ttname"><a href="unionInstruction.html#ab956d518131bd4518b4c850be49e4025">Instruction::_pad</a></div><div class="ttdeci">unsigned _pad</div><div class="ttdef"><b>Definition:</b> <a href="instruction_8h_source.html#l00064">instruction.h:64</a></div></div>
+</div><!-- fragment -->
+<p><div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Voici le graphe des appelants de cette fonction :</div>
+<div id="dynsection-3-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-3-content" class="dyncontent" style="display:none;">
+<div class="center"><img src="instruction_8c_ac767ea3efb2ab451d4d1641b14138d02_icgraph.png" border="0" usemap="#instruction_8c_ac767ea3efb2ab451d4d1641b14138d02_icgraph" alt=""/></div>
+<map name="instruction_8c_ac767ea3efb2ab451d4d1641b14138d02_icgraph" id="instruction_8c_ac767ea3efb2ab451d4d1641b14138d02_icgraph">
+<area shape="rect" id="node3" href="instruction_8h.html#a437080d5e8c504588a47d0dba468492f" title="Impression d&#39;une instruction sous forme lisible (désassemblage) " alt="" coords="123,33,235,63"/><area shape="rect" id="node5" href="exec_8h.html#aae353f8fd7ccdbebd6c37fc0f75d12d3" title="Trace de l&#39;exécution. " alt="" coords="455,5,505,35"/><area shape="rect" id="node11" href="machine_8h.html#aba3ce4987ef379073d9d3f31debf89e7" title="Affichage des instructions du programme. " alt="" coords="284,58,385,89"/><area shape="rect" id="node7" href="machine_8h.html#ad0bfa0ce7434b963eea888d7b847ac3b" title="Simulation. " alt="" coords="573,58,627,89"/><area shape="rect" id="node9" href="test__simul_8c.html#a0ddf1224851353fc92bfbff6f499fa97" title="Programme de test. " alt="" coords="675,85,725,115"/><area shape="rect" id="node13" href="debug_8h.html#a3a88fdc680b7a1ae8c4c7c8ddee730ab" title="Dialogue de mise au point interactive pour l&#39;instruction courante. " alt="" coords="436,58,524,89"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a4cf35570c7b75e596c642031544688e0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* condition_names[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <span class="stringliteral">&quot;NC&quot;</span>, <span class="stringliteral">&quot;EQ&quot;</span>, <span class="stringliteral">&quot;NE&quot;</span>, <span class="stringliteral">&quot;GT&quot;</span>, <span class="stringliteral">&quot;GE&quot;</span>, <span class="stringliteral">&quot;LT&quot;</span>, <span class="stringliteral">&quot;LE&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Forme imprimable des conditions. </p>
+
+<p>Définition à la ligne <a class="el" href="instruction_8c_source.html#l00020">20</a> du fichier <a class="el" href="instruction_8c_source.html">instruction.c</a>.</p>
+
+<p>Référencé par <a class="el" href="instruction_8c_source.html#l00051">print_instruction()</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae5e0c6bef1ffc3adc867e3ea4b9a57c3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* cop_names[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur initiale :</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    <span class="stringliteral">&quot;ILLOP&quot;</span>, <span class="stringliteral">&quot;NOP&quot;</span>, <span class="stringliteral">&quot;LOAD&quot;</span>, <span class="stringliteral">&quot;STORE&quot;</span>, <span class="stringliteral">&quot;ADD&quot;</span>, <span class="stringliteral">&quot;SUB&quot;</span>, <span class="stringliteral">&quot;BRANCH&quot;</span>, <span class="stringliteral">&quot;CALL&quot;</span>, <span class="stringliteral">&quot;RET&quot;</span>, <span class="stringliteral">&quot;PUSH&quot;</span>, <span class="stringliteral">&quot;POP&quot;</span>, <span class="stringliteral">&quot;HALT&quot;</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+<p>Forme imprimable des codes opérations. </p>
+
+<p>Définition à la ligne <a class="el" href="instruction_8c_source.html#l00014">14</a> du fichier <a class="el" href="instruction_8c_source.html">instruction.c</a>.</p>
+
+<p>Référencé par <a class="el" href="instruction_8c_source.html#l00051">print_instruction()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="instruction_8c.html">instruction.c</a></li>
+    <li class="footer">Généré le Mercredi 11 Juin 2014 16:24:00 pour Simulateur du jeu d&#39;instructions d&#39;un processeur simple par
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.7 </li>
+  </ul>
+</div>
+</body>
+</html>
