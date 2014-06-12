@@ -98,12 +98,10 @@ bool instr_load(Machine *pmach, Instruction instr){
 		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] =  pmach->_data[addr];
 
-	} else if (instr.instr_generic._immediate == 1){ //!< Mode immédiat
+	} else { //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] = instr.instr_immediate._value;
 	}
-	else { //!< Instruction illégale
-		error_instruction(pmach, ERR_ILLEGAL);
-	}
+	
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
 	return true;
@@ -151,10 +149,8 @@ bool instr_add(Machine *pmach, Instruction instr){
 		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] += pmach->_data[addr];
 
-	} else if (instr.instr_generic._immediate == 1) { //!< Mode immédiat
+	} else { //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] += instr.instr_immediate._value;
-	} else { //!< Instruction illégale
-		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
@@ -177,10 +173,8 @@ bool instr_sub(Machine *pmach, Instruction instr){
 		check_adress_data(pmach, addr);
 		pmach->_registers[instr.instr_generic._regcond] -= pmach->_data[addr];
 
-	} else if (instr.instr_generic._immediate == 1) { //!< Mode immédiat
+	} else { //!< Mode immédiat
 		pmach->_registers[instr.instr_generic._regcond] -= instr.instr_immediate._value;
-	} else { //!< Instruction illégale
-		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	set_cc(pmach, pmach->_registers[instr.instr_generic._regcond]);
@@ -266,12 +260,10 @@ bool instr_push(Machine *pmach, Instruction instr){
 		check_adress_data(pmach, addr);
 		pmach->_data[pmach->_sp] = pmach->_data[addr];
 
-	} else if (instr.instr_generic._immediate == 1){ //!< Mode immediat
+	} else { //!< Mode immediat
 
 		pmach->_data[pmach->_sp] = instr.instr_immediate._value;
 
-	} else { //!< Instruction illégale
-		error_instruction(pmach, ERR_ILLEGAL);
 	}
 
 	check_sp(pmach, pmach->_sp - 1);
@@ -287,7 +279,7 @@ bool instr_push(Machine *pmach, Instruction instr){
  */
 bool instr_pop(Machine *pmach, Instruction instr){
 
-	if (instr.instr_generic._immediate != 0){ //!< Instruction illégale
+	if (instr.instr_generic._immediate == 1){ //!< Instruction illégale
 		error_instruction(pmach, ERR_IMMEDIATE);
 	}
 
@@ -368,7 +360,7 @@ unsigned calculate_adress(Machine *pmach, Instruction instr){
 	if (instr.instr_generic._indexed == 1){ //!< Mode indexé
 		check_index_register(pmach, instr.instr_indexed._rindex);
 		addr = pmach->_registers[instr.instr_indexed._rindex]+instr.instr_indexed._offset;
-	} else if (instr.instr_generic._indexed == 0){ //!< Mode absolu
+	} else { //!< Mode absolu
 		addr = instr.instr_absolute._address;
 	}
 
@@ -428,7 +420,7 @@ void error_instruction(Machine *pmach, Error err){
  * \param addr son adresse
  */
 void trace(const char *msg, Machine *pmach, Instruction instr, unsigned addr){
-
+	
 	printf("TRACE: %s: 0x%.4x: ", msg, (uint32_t)addr);
 	print_instruction(instr, addr);
 	printf("\n");
