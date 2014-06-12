@@ -13,28 +13,28 @@
  */
 void error(Error err, unsigned addr){
 	switch(err){
-		case 0://!< Pas d'erreur
+		case ERR_NOERROR://!< Pas d'erreur
 			printf("There is no error: %#.4x\n",addr);
 			exit(0);
-		case 1://!< Instruction inconnue
+		case ERR_UNKNOWN://!< Instruction inconnue
 			printf("ERROR: Instruction inconnue %#.4x\n",addr);
 			exit(1);
-		case 2://!< Instruction illégale
+		case ERR_ILLEGAL://!< Instruction illégale
 			printf("ERROR: Instruction illégale %#.4x\n",addr);
 			exit(1);
-		case 3://!< Condition illégale
+		case ERR_CONDITION://!< Condition illégale
 			printf("ERROR: Condition illégale %#.4x\n",addr);
 			exit(1);
-		case 4://!< Valeur immédiate interdite
+		case ERR_IMMEDIATE://!< Valeur immédiate interdite
 			printf("ERROR: Valeur immédiate interdite %#.4x\n",addr);
 			exit(1);
-		case 5://!< Violation de taille du segment de texte
+		case ERR_SEGTEXT://!< Violation de taille du segment de texte
 			printf("ERROR: Violation de taille du segment de texte %#.4x\n",addr);
 			exit(1);
-		case 6://!< Violation de taille du segment de données
+		case ERR_SEGDATA://!< Violation de taille du segment de données
 			printf("ERROR: Violation de taille du segment de données %#.4x\n",addr);
 			exit(1);
-		case 7://!< Violation de taille du segment de pile
+		case ERR_SEGSTACK://!< Violation de taille du segment de pile
 			printf("ERROR: Violation de taille du segment de pile %#.4x\n",addr);
 			exit(1);
 		default:
