@@ -397,7 +397,7 @@ void check_sp(Machine *pmach, int sp){
 	}
 }
 
-//! Verifie que l'on accede pas en dehors du segment de données
+//! Verifie que l'on accede pas en dehors de la memoire
 /*!
  * \param pmach la machine/programme en cours d'exécution
  * \param sp l'adresse de la memoire à acceder
@@ -416,7 +416,6 @@ void check_adress_data(Machine *pmach, unsigned adress){
  */
 void error_instruction(Machine *pmach, Error err){
 	error(err, pmach->_pc);
-	exit(EXIT_FAILURE);
 }
 
 //! Trace de l'exécution
