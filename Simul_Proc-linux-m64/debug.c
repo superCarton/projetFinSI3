@@ -24,7 +24,7 @@ bool debug_ask(Machine *pmach){
 	char input[NMAX];
 	while(1){
 		printf("DEBUG? ");
-		scanf("%s",input);
+		gets(input);
 		if(strcmp(input,"h")==0){
 			printf("h\thelp\n");
 			printf("c\tcontinue(exit interactive debug mode)\n");
@@ -40,7 +40,7 @@ bool debug_ask(Machine *pmach){
 			return false;
 		if(strcmp(input,"r")==0)
 			print_cpu(pmach);
-		if(strcmp(input,"RET")==0 || strcmp(input,"s")==0)
+		if(strcmp(input,"RET")==0 || strcmp(input,"s")==0 || strcmp(input,"\0")==0)
 			return true;
 		if(strcmp(input,"d")==0)
 			print_data(pmach);
